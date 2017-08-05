@@ -1,4 +1,4 @@
-// C program to demonstrate insert operation in binary search tree
+//C program to demonstrate insert operation in binary search tree
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -9,7 +9,7 @@ typedef struct node
 	struct node *left, *right, *parent;
 }node_data;
 
-//Initiallize functions;
+//Initialize functions;
 void menu(node_data *root);
 void enter_node(node_data *root, int key);
 void printTree(node_data *root);
@@ -21,7 +21,7 @@ void freeTreeRec(node_data* node);
 
 void main()
 {
-	//Initiallize variables;
+	//Initialize variables;
 	node_data *root;
 	root = (node_data*)malloc(sizeof(node_data));
 	root->left = NULL;
@@ -37,18 +37,18 @@ void main()
 	freeTreeRec(root);
 }
 
-//menu for user;
+//Menu for user;
 void menu(node_data *root)
 {
 
 	char input = 'z';
 	int Nkey = 0, k = 0;
 
-	//for min and max function;
+	//For min and max function;
 	node_data *saveMin;
 	node_data *saveMax;
 
-	//for remove node function;
+	//For remove node function;
 	node_data *node_to_remove;
 
 	while (input != 'q')
@@ -73,7 +73,7 @@ void menu(node_data *root)
 		case 'b':
 			printTree(root);
 			printf("Press any key to continue\n");
-			getch();	//to hold the program
+			getch();	//To hold the program
 			break;
 		case 'c':
 			printf("Enter the key you want to search\n");
@@ -121,10 +121,9 @@ void menu(node_data *root)
 	}
 }
 
-//This function free all the node in the tree. 
-//The order call postorder
-void freeTreeRec(node_data* node)
-{
+//This function free all the memory. 
+void freeTreeRec(node_data* node){
+	//Recursive Postorder
 	if (node == NULL){	//Base case
 		return;
 	}
@@ -178,31 +177,30 @@ void enter_node(node_data *root, int Nkey)
 	}
 }
 
-//preorder
-//node left right
+//Preorder.
+//Node, Left, Right.
 void printTree(node_data *root)
 {
 	if (root == NULL)
 	{
 		return;
 	}
-	//check if tree empty;
+	//Check if tree empty;
 	if (root->key == -1)
 	{
-		printf("the tree is empty\n");
+		printf("The tree is empty\n");
 		return;
 	}
-	//print;
+	//Print;
 	printf("%d\n", root->key);
 	printTree(root->left);
 	printTree(root->right);
 }
 
-//search for some node;
+//Search for some node;
 node_data *serch(node_data *root, int k)
 {
 	node_data* node = root;
-	//by logic of bst;
 	while (node != NULL)
 	{
 		if (k < node->key)
@@ -218,12 +216,11 @@ node_data *serch(node_data *root, int k)
 			return node;
 		}
 	}
-	//if not fuond;
+	//If not found;
 	return NULL;
 }
 
 //Search max;
-//By logic of bst;
 node_data *maxNode(node_data *root)
 {
 	node_data *save_node;
